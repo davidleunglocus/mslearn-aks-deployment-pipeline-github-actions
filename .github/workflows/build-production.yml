@@ -1,12 +1,11 @@
 name: Build and push the tagged build to production
 
 on:
-  push:
-    tags:
-      - '*'
+  create:
 
 jobs:
   build_push_image:
+    if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     runs-on: ubuntu-20.04
 
     steps:
